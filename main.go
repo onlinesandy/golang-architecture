@@ -18,12 +18,22 @@ func main() {
 
 	pArr := []Person{p1, p2}
 
-	jsn_res, err := json.Marshal(pArr)
+	jsn_marshl, err := json.Marshal(pArr)
 
 	if err != nil {
 		log.Panic(err)
 	}
 
-	fmt.Println(string(jsn_res))
+	fmt.Println(string(jsn_marshl))
+
+	pArr2 := []Person{}
+
+	err = json.Unmarshal(jsn_marshl, &pArr2)
+
+	if err != nil {
+		log.Panic(err)
+	}
+
+	fmt.Println(pArr2)
 
 }
